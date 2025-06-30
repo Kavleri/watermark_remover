@@ -1,15 +1,23 @@
 # watermark_remover
+Alat ini menyediakan dua metode untuk menghapus watermark dari gambar dan video. Anda dapat memilih antara metode standar berbasis OpenCV atau metode canggih berbasis AI (Inpainting) yang didukung oleh model dari Hugging Face.
 
-## Persiapan
+## Fitur ✨
+<li>AI Inpainting: Menghapus objek atau watermark dari gambar dan video secara cerdas.</li>
 
-### Requirements
+<li>Metode Standar: Menghapus watermark dari gambar menggunakan teknik pemrosesan gambar konvensional.</li>
 
-Untuk menjalankan alat ini, install semua dependensi yang dibutuhkan dengan perintah berikut:
+<li>Dukungan Video & Gambar: Mampu memproses file gambar dan video (khusus untuk mode AI).</li>
+
+<li>Antarmuka Interaktif: Memungkinkan pengguna untuk menandai area watermark secara manual.</li>
+
+### Instalasi ⚙️
+
+Pastikan Anda memiliki Python 3.8+ terinstal. Untuk menginstal semua dependensi yang diperlukan, jalankan perintah berikut di terminal Anda:
 
 ```bash
 pip install opencv-python numpy torch torchvision torchaudio diffusers transformers accelerate pillow
-
-### Kebutuhhan
+```
+### Konfigurasi 🔑
 
 Ketika sudah menginstall semua dependensi, masukkan token HuggingFace (Optional)
 ```bash
