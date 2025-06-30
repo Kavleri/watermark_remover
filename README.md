@@ -54,7 +54,7 @@ Skrip ini menggunakan metode non-AI dan cocok untuk menghapus watermark sederhan
 python hapus_watermark.py
 ```
 
-### Catatan Penggunaan
+### <i>Catatan Penggunaan
 
 <li><b>Kinerja AI</b> : Fitur AI sangat bergantung pada spesifikasi komputer. Sangat disarankan menggunakan <b>GPU NVIDIA (CUDA)</b> untuk waktu proses yang wajar. Jika hanya menggunakan CPU, prosesnya akan sangat lambat.</li>
 
@@ -64,4 +64,4 @@ python hapus_watermark.py
 
 <li><b>Batasan Pemrosesan Video</b> : Untuk video, mask (area yang Anda tandai) pada frame pertama akan diterapkan ke <b>seluruh durasi video</b>. Fitur ini paling efektif untuk menghapus objek statis seperti logo atau teks yang posisinya tidak berubah.</li>
 
-<li><b>Sumber Daya</b> : Proses AI memakan banyak memori (RAM dan VRAM), terutama saat memproses video. Pastikan komputer Anda memiliki sumber daya yang cukup sebelum memproses file berdurasi panjang.</li>
+<li><b>Sumber Daya</b> : Proses AI memakan banyak memori (RAM dan VRAM), terutama saat memproses video. Pastikan komputer Anda memiliki sumber daya yang cukup sebelum memproses file berdurasi panjang.</li></i>
