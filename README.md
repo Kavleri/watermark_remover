@@ -1,4 +1,4 @@
-# watermark_remover
+# Watermark_Remover
 
 Alat ini menyediakan dua metode untuk menghapus watermark dari gambar dan video. Anda dapat memilih antara metode standar berbasis OpenCV atau metode canggih berbasis AI (Inpainting) yang didukung oleh model dari Hugging Face.
 
