@@ -31,7 +31,7 @@ Fitur penghapusan watermark berbasis AI memerlukan autentikasi ke Hugging Face H
 huggingface-cli login
 ```
 
-<li>Tempelkan token Anda saat diminta dan tekan Enter.(misal : misal : hf_xxxxxxxxxxxxxxxxxxxxxxxxSJ)</li>
+<li>Tempelkan token Anda saat diminta dan tekan Enter. (misal : misal : hf_xxxxxxxxxxxxxxxxxxxxxxxxSJ)</li>
 
 ### Cara Penggunaan 
 
