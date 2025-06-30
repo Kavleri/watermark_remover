@@ -18,23 +18,28 @@ Pastikan Anda memiliki Python 3.8+ terinstal. Untuk menginstal semua dependensi 
 pip install opencv-python numpy torch torchvision torchaudio diffusers transformers accelerate pillow
 ```
 ### Konfigurasi 🔑
-
-Ketika sudah menginstall semua dependensi, masukkan token HuggingFace (Optional)
+<h4>Token Hugging Face (Wajib untuk Fitur AI)</h4>
+Fitur penghapusan watermark berbasis AI memerlukan autentikasi ke Hugging Face Hub untuk mengunduh model. Anda hanya perlu melakukan konfigurasi ini satu kali.
+<li>Dapatkan Access Token dari akun Hugging Face Anda di: <a href>huggingface.co/settings/tokens.</a></li>
+<li>Jalankan perintah berikut di terminal untuk login terlebih dahulu:</li>
 ```bash
 huggingface-cli login
+```
+<li>Tempelkan token Anda saat diminta dan tekan Enter.</li>
+
+### Cara Penggunaan 🚀
+Proyek ini menyediakan dua skrip berbeda sesuai kebutuhan.
 
 Terminal akan menampilkan Token: (Masukkan Token anda, Tempel (paste) token yang sudah Anda salin tadi, misal : hf_xxxxxxxxxxxxxxxxxxxxxxxxSJ, lalu tekan enter)
 
-<i>Catatan: Saat Anda menempelkan token, teksnya mungkin tidak akan terlihat di layar. Ini adalah fitur keamanan standar di terminal.</i>
-
-Setelah berhasil, akan terlihat pesan seperti (Token is valid. Login successful)
-
-Pilihan lain, anda bisa menjalankan langsung alat <b>hapus_watermark.py</b> (Untuk gambar tanpa AI)
-dengan perintah
-``bash
-python hapus_watermark.py
-
-Kalau sudah memasukkan Token, bisa langsung pakai alat <b>video_foto_watermark.py</b>
-dengan perintah
-``bash
+<li>1. Penghapus Watermark Berbasis AI (Gambar & Video)</li>
+Skrip ini menggunakan model AI untuk mengisi area watermark secara cerdas. Cocok untuk watermark kompleks pada gambar dan video.
+```bash
 python video_foto_watermark.py
+```
+
+<li>Penghapus Watermark Standar (Hanya Gambar)</li>
+Skrip ini menggunakan metode non-AI dan cocok untuk menghapus watermark sederhana pada gambar. Skrip ini tidak memerlukan token Hugging Face.
+```bash
+python hapus_watermark.py
+```
