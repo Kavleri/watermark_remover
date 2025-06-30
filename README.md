@@ -56,12 +56,12 @@ python hapus_watermark.py
 
 ### <i>Catatan Penggunaan
 
-<li><b>Kinerja AI</b> : Fitur AI sangat bergantung pada spesifikasi komputer. Sangat disarankan menggunakan <b>GPU NVIDIA (CUDA)</b> untuk waktu proses yang wajar. Jika hanya menggunakan CPU, prosesnya akan sangat lambat.</li>
+<li><b>Kinerja AI</b> : Fitur AI sangat bergantung pada spesifikasi komputer. Sangat disarankan menggunakan <b>GPU NVIDIA (CUDA)</b> untuk waktu proses yang wajar. Jika hanya menggunakan CPU, prosesnya akan sangat lambat.</li><br>
 
-<li><b>Unduhan Pertama Kali</b> : Saat pertama kali menjalankan skrip AI, program akan mengunduh model dari Hugging Face. Ukuran model ini <b>lebih dari 5 GB</b>, jadi pastikan Anda memiliki koneksi internet yang stabil. Proses ini hanya terjadi sekali.</li>
+<li><b>Unduhan Pertama Kali</b> : Saat pertama kali menjalankan skrip AI, program akan mengunduh model dari Hugging Face. Ukuran model ini <b>lebih dari 5 GB</b>, jadi pastikan Anda memiliki koneksi internet yang stabil. Proses ini hanya terjadi sekali.</li><br>
 
-<li><b>Panduan Prompt</b> : Kualitas hasil AI sangat dipengaruhi oleh prompt yang Anda berikan. Jelaskan area yang seharusnya ada di balik watermark, bukan menjelaskan watermark itu sendiri.</li>
+<li><b>Panduan Prompt</b> : Kualitas hasil AI sangat dipengaruhi oleh prompt yang Anda berikan. Jelaskan area yang seharusnya ada di balik watermark, bukan menjelaskan watermark itu sendiri.</li><br>
 
-<li><b>Batasan Pemrosesan Video</b> : Untuk video, mask (area yang Anda tandai) pada frame pertama akan diterapkan ke <b>seluruh durasi video</b>. Fitur ini paling efektif untuk menghapus objek statis seperti logo atau teks yang posisinya tidak berubah.</li>
+<li><b>Batasan Pemrosesan Video</b> : Untuk video, mask (area yang Anda tandai) pada frame pertama akan diterapkan ke <b>seluruh durasi video</b>. Fitur ini paling efektif untuk menghapus objek statis seperti logo atau teks yang posisinya tidak berubah.</li><br>
 
 <li><b>Sumber Daya</b> : Proses AI memakan banyak memori (RAM dan VRAM), terutama saat memproses video. Pastikan komputer Anda memiliki sumber daya yang cukup sebelum memproses file berdurasi panjang.</li></i>
