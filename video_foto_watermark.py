@@ -3,15 +3,14 @@ import numpy as np
 import torch
 from PIL import Image
 from diffusers import AutoPipelineForInpainting
-import os # Ditambahkan untuk manajemen file
+import os 
 
-# --- Variabel Global & Fungsi Bantuan (Sebagian besar sama) ---
 drawing = False
 mask = None
-original_image = None # Untuk gambar, ini adalah gambar. Untuk video, ini adalah frame pertama.
+original_image = None 
 display_image = None
 scaling_factor = 1.0
-brush_size = 30 # Ukuran kuas bisa diubah di sini
+brush_size = 30 
 
 def resize_to_fit(image, max_width=1280, max_height=720):
     global scaling_factor
@@ -47,16 +46,13 @@ def draw_mask(event, x, y, flags, param):
         drawing = False
         cv2.circle(mask, (original_x, original_y), scaled_brush_size, 255, -1)
 
-# --- Fungsi Pemrosesan Inti ---
 
 def get_user_mask(frame_to_mask):
     """Fungsi untuk menampilkan UI dan mendapatkan mask dari pengguna."""
     global mask, display_image
     
-    # Inisialisasi mask berdasarkan resolusi frame asli
     mask = np.zeros(frame_to_mask.shape[:2], dtype="uint8")
     
-    # Tampilkan UI untuk menggambar mask
     window_name = "Tandai Area yang Akan Dihapus (Tekan 's' untuk Lanjut, 'q' untuk Batal)"
     cv2.namedWindow(window_name)
     cv2.setMouseCallback(window_name, draw_mask)
@@ -68,7 +64,6 @@ def get_user_mask(frame_to_mask):
         display_image = resize_to_fit(frame_to_mask)
         mask_resized = cv2.resize(mask, (display_image.shape[1], display_image.shape[0]))
         
-        # Buat overlay merah transparan
         overlay_color = cv2.cvtColor(mask_resized, cv2.COLOR_GRAY2BGR)
         overlay_color[np.where((overlay_color == [255, 255, 255]).all(axis=2))] = [0, 0, 255] # Merah
         combined_display = cv2.addWeighted(display_image, 0.7, overlay_color, 0.3, 0)
@@ -78,10 +73,9 @@ def get_user_mask(frame_to_mask):
         key = cv2.waitKey(1) & 0xFF
         if key == ord('q'):
             cv2.destroyAllWindows()
-            return None # Batal
+            return None
         elif key == ord('s'):
             cv2.destroyAllWindows()
-            # Cek jika mask kosong
             if np.all(mask == 0):
                 print("Peringatan: Anda tidak menandai area apapun. Proses dibatalkan.")
                 return None
@@ -96,7 +90,6 @@ def process_image(pipe, device):
         print(f"Error: File '{file_gambar}' tidak ditemukan.")
         return
 
-    # Dapatkan mask dari pengguna
     user_mask = get_user_mask(original_image)
     if user_mask is None:
         return
@@ -104,7 +97,6 @@ def process_image(pipe, device):
     prompt = input("Masukkan PROMPT (deskripsi gambar, cth: 'a photo of a clear blue sky'): ")
     print("\nMemproses dengan AI... Harap tunggu.")
 
-    # Konversi ke format yang dibutuhkan pipeline
     pil_image = Image.fromarray(cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB))
     pil_mask = Image.fromarray(user_mask)
 
@@ -121,7 +113,6 @@ def process_image(pipe, device):
     result_image_cv = cv2.cvtColor(np.array(result_image_pil), cv2.COLOR_RGB2BGR)
     print("Proses AI selesai!")
 
-    # Simpan dan tampilkan hasil
     nama_hasil = "hasil_ai_" + os.path.basename(file_gambar)
     cv2.imwrite(nama_hasil, result_image_cv)
     print(f"Hasil resolusi penuh disimpan sebagai '{nama_hasil}'")
@@ -142,14 +133,12 @@ def process_video(pipe, device):
         print(f"Error: Gagal membuka file video '{file_video}'.")
         return
 
-    # Baca frame pertama untuk mendapatkan mask dari pengguna
     ret, first_frame = cap.read()
     if not ret:
         print("Error: Tidak bisa membaca frame dari video.")
         cap.release()
         return
 
-    # Dapatkan mask dari pengguna menggunakan frame pertama
     user_mask = get_user_mask(first_frame)
     if user_mask is None:
         cap.release()
@@ -157,7 +146,6 @@ def process_video(pipe, device):
         
     prompt = input("Masukkan PROMPT (deskripsi untuk area yang dihapus, cth: 'a clean wall'): ")
 
-    # Siapkan video output
     fourcc = cv2.VideoWriter_fourcc(*'mp4v') # Codec
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -166,13 +154,11 @@ def process_video(pipe, device):
     nama_hasil = "hasil_ai_" + os.path.basename(file_video)
     out = cv2.VideoWriter(nama_hasil, fourcc, fps, (width, height))
     
-    # Reset video capture untuk mulai dari awal
     cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
     
     print(f"\nMemulai pemrosesan video ({total_frames} frames)... Ini akan memakan waktu SANGAT LAMA.")
     print("PERINGATAN: Jangan menutup jendela program sampai proses selesai.")
-    
-    # Konversi mask ke PIL Image sekali saja
+
     pil_mask = Image.fromarray(user_mask)
     generator = torch.Generator(device=device).manual_seed(0)
 
