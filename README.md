@@ -38,7 +38,7 @@ huggingface-cli login
 Proyek ini menyediakan dua skrip berbeda sesuai kebutuhan.
 
 
-<li>Penghapus Watermark Berbasis AI (Gambar & Video)</li>
+<li>Penghapus Watermark Berbasis AI (Gambar & Video)</li><br>
 
 Skrip ini menggunakan model AI untuk mengisi area watermark secara cerdas. Cocok untuk watermark kompleks pada gambar dan video.
 
@@ -46,7 +46,7 @@ Skrip ini menggunakan model AI untuk mengisi area watermark secara cerdas. Cocok
 python video_foto_watermark.py
 ```
 
-<li>Penghapus Watermark Standar (Hanya Gambar)</li>
+<li>Penghapus Watermark Standar (Hanya Gambar)</li><br>
 
 Skrip ini menggunakan metode non-AI dan cocok untuk menghapus watermark sederhana pada gambar. Skrip ini tidak memerlukan token Hugging Face.
 
