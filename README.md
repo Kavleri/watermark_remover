@@ -65,3 +65,8 @@ python hapus_watermark.py
 <li><b>Batasan Pemrosesan Video</b> : Untuk video, mask (area yang Anda tandai) pada frame pertama akan diterapkan ke <b>seluruh durasi video</b>. Fitur ini paling efektif untuk menghapus objek statis seperti logo atau teks yang posisinya tidak berubah.</li><br>
 
 <li><b>Sumber Daya</b> : Proses AI memakan banyak memori (RAM dan VRAM), terutama saat memproses video. Pastikan komputer Anda memiliki sumber daya yang cukup sebelum memproses file berdurasi panjang.</li></i>
+
+
+# Lisensi
+
+Skrip ini dirilis di bawah lisensi <a href="https://github.com/Kavleri/watermark_remover/blob/main/LICENSE">MIT License</a>. Anda bebas untuk menggunakan, memodifikasi, dan mendistribusikan ulang skrip ini sesuai ketentuan lisensi.
